@@ -63,4 +63,24 @@ class RestaurantTest {
                 ()->restaurant.removeFromMenu("French fries"));
     }
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+    //<<<<<<<<<<<<<<<<<<<<<<<ORDER_VALUE>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    @Test
+    public void getOrderValue_should_return_0_when_no_item_is_passed() {
+        List<String> itemList = new ArrayList<String>();
+        assertEquals(0,restaurant.getOrderValue(itemList));
+    }
+
+    @Test
+    public void getOrderValue_should_return_price_of_the_item_only_1_item_passed() {
+        List<String> itemList = List.of("Vegetable lasagne");
+        assertEquals(269,restaurant.getOrderValue(itemList));
+    }
+
+    @Test
+    public void getOrderValue_should_return_sum_of_all_the_item_prices() {
+        List<String> itemList = List.of("Vegetable lasagne","Sweet corn soup");
+        assertEquals(388,restaurant.getOrderValue(itemList));
+    }
+    //<<<<<<<<<<<<<<<<<<<<<<<ORDER_VALUE>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 }
